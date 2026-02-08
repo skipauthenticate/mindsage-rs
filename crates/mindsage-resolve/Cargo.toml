@@ -1,0 +1,15 @@
+[package]
+name = "mindsage-resolve"
+description = "Resolvers: keyword, chunk, hybrid, entity, timeline, answer"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+mindsage-core = { workspace = true }
+mindsage-store = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }

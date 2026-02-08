@@ -1,0 +1,16 @@
+[package]
+name = "mindsage-chat"
+description = "RAG chat: external LLM streaming (OpenAI/Anthropic/Groq)"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+mindsage-core = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+reqwest = { workspace = true }
+tokio = { workspace = true }
+tokio-stream = { workspace = true }
+futures = { workspace = true }
+async-stream = { workspace = true }
+tracing = { workspace = true }

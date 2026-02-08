@@ -1,0 +1,20 @@
+[package]
+name = "mindsage-runtime"
+description = "Orchestrator, budget tracker, power-aware scheduling"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+mindsage-core = { workspace = true }
+mindsage-store = { workspace = true }
+mindsage-ingest = { workspace = true }
+mindsage-infer = { workspace = true }
+mindsage-consolidate = { workspace = true }
+mindsage-resolve = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }

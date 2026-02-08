@@ -1,0 +1,16 @@
+[package]
+name = "mindsage-protocol"
+description = "Consent sessions, vault scoping, PII detection/LPRAG"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+mindsage-core = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+regex = { workspace = true }
+uuid = { workspace = true }
+parking_lot = { workspace = true }
+tracing = { workspace = true }
+once_cell = { workspace = true }
+chrono = { workspace = true }

@@ -1,0 +1,18 @@
+[package]
+name = "mindsage-connectors"
+description = "Data connectors: Notion API, Facebook ZIP, ChatGPT import"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+mindsage-core = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+chrono = { workspace = true }
+parking_lot = { workspace = true }
+zip = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }

@@ -1,0 +1,42 @@
+[package]
+name = "mindsage-server"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "mindsage"
+path = "src/main.rs"
+
+[dependencies]
+mindsage-core = { workspace = true }
+mindsage-store = { workspace = true }
+mindsage-ingest = { workspace = true }
+mindsage-infer = { workspace = true }
+mindsage-chat = { workspace = true }
+mindsage-browser = { workspace = true }
+mindsage-localsend = { workspace = true }
+mindsage-connectors = { workspace = true }
+mindsage-protocol = { workspace = true }
+mindsage-runtime = { workspace = true }
+axum = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+tokio = { workspace = true }
+tokio-stream = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+sha2 = { workspace = true }
+hex = { workspace = true }
+parking_lot = { workspace = true }
+anyhow = { workspace = true }
+rusqlite = { workspace = true }
+reqwest = { workspace = true }
+futures = { workspace = true }
+async-stream = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }

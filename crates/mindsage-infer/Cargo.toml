@@ -1,0 +1,22 @@
+[package]
+name = "mindsage-infer"
+description = "Embedding engine (ONNX), model management, query cache"
+version.workspace = true
+edition.workspace = true
+
+[features]
+default = []
+onnx = ["dep:ort", "dep:tokenizers"]
+
+[dependencies]
+mindsage-core = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+ndarray = { workspace = true }
+parking_lot = { workspace = true }
+thiserror = { workspace = true }
+
+# ONNX (optional, feature-gated)
+ort = { workspace = true, optional = true }
+tokenizers = { workspace = true, optional = true }

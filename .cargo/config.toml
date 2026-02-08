@@ -1,0 +1,29 @@
+# Cross-compilation configuration for Jetson Orin Nano (aarch64-linux)
+#
+# To cross-compile from macOS or x86_64 Linux:
+#   1. Install the target: rustup target add aarch64-unknown-linux-gnu
+#   2. Install a cross-linker (see deploy/README.md)
+#   3. Build: cargo build --release --target aarch64-unknown-linux-gnu
+#
+# Alternatively, use `cross` (https://github.com/cross-rs/cross):
+#   cargo install cross
+#   cross build --release --target aarch64-unknown-linux-gnu
+
+[target.aarch64-unknown-linux-gnu]
+# Using cross-rs (Docker-based, easiest)
+# Or set linker explicitly for native cross-compilation:
+# linker = "aarch64-linux-gnu-gcc"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
+
+[profile.release-jetson]
+inherits = "release"
+# Jetson-optimized: smaller binary, good performance
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true

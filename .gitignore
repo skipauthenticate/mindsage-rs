@@ -1,0 +1,7 @@
+/target
+/models/*.gguf
+/models/*.onnx
+/models/*.bin
+*.db
+*.db-wal
+*.db-shm
