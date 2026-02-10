@@ -466,8 +466,20 @@ async fn clear_auth(
     Json(SuccessResponse::ok())
 }
 
-async fn get_sites(State(state): State<Arc<AppState>>) -> Json<Vec<SiteInfo>> {
-    Json(state.browser_manager.get_sites_info())
+async fn get_sites(State(state): State<Arc<AppState>>) -> Json<serde_json::Value> {
+    let sites = state.browser_manager.get_sites_info();
+    let sites_with_id: Vec<serde_json::Value> = sites
+        .into_iter()
+        .map(|s| {
+            serde_json::json!({
+                "id": s.name,
+                "name": s.name,
+                "url": s.url,
+                "authenticated": s.authenticated,
+            })
+        })
+        .collect();
+    Json(serde_json::json!({ "sites": sites_with_id }))
 }
 
 async fn start_sync(

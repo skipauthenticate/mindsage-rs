@@ -33,6 +33,9 @@ pub fn routes() -> Router<Arc<AppState>> {
             "/consent/session/{id}/categories",
             post(update_consent_categories),
         )
+        // Status & presets (used by frontend)
+        .route("/consent/status", get(consent_status))
+        .route("/consent/presets", get(consent_presets))
 }
 
 // ---------------------------------------------------------------
@@ -157,4 +160,55 @@ async fn update_consent_categories(
         Some(session) => Json(serde_json::to_value(session).unwrap_or_default()),
         None => Json(serde_json::json!({ "error": "Session not found" })),
     }
+}
+
+async fn consent_status(
+    State(state): State<Arc<AppState>>,
+) -> Json<serde_json::Value> {
+    let sessions = state.consent_manager.list_sessions();
+    Json(serde_json::json!({
+        "available": true,
+        "active_sessions": sessions.len(),
+        "presets_available": ["full_access", "minimal", "anonymized"],
+        "categories_available": [
+            "personal_info", "financial", "health", "location",
+            "communications", "browsing_history", "preferences"
+        ]
+    }))
+}
+
+async fn consent_presets() -> Json<serde_json::Value> {
+    Json(serde_json::json!({
+        "presets": [
+            {
+                "name": "full_access",
+                "description": "Allow access to all data categories",
+                "allowed_categories": [
+                    "personal_info", "financial", "health", "location",
+                    "communications", "browsing_history", "preferences"
+                ],
+                "blocked_categories": [],
+                "exposed_pii_types": []
+            },
+            {
+                "name": "minimal",
+                "description": "Minimal access — only preferences and browsing history",
+                "allowed_categories": ["preferences", "browsing_history"],
+                "blocked_categories": [
+                    "personal_info", "financial", "health", "location", "communications"
+                ],
+                "exposed_pii_types": []
+            },
+            {
+                "name": "anonymized",
+                "description": "Access all categories but anonymize PII",
+                "allowed_categories": [
+                    "personal_info", "financial", "health", "location",
+                    "communications", "browsing_history", "preferences"
+                ],
+                "blocked_categories": [],
+                "exposed_pii_types": ["name", "email", "phone", "address", "ssn"]
+            }
+        ]
+    }))
 }
