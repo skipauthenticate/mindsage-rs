@@ -55,7 +55,7 @@ fn default_top_k() -> usize {
     5
 }
 fn default_min_score() -> f64 {
-    0.3
+    0.01
 }
 
 /// Non-streaming chat response.

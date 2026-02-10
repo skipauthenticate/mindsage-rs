@@ -26,6 +26,7 @@ pub const GROQ_MODELS: &[&str] = &[
 
 /// Stored LLM configuration (persisted to llm-config.json).
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct LLMConfig {
     #[serde(default = "default_preferred")]
     pub preferred_provider: String,

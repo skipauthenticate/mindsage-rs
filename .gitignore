@@ -5,3 +5,11 @@
 *.db
 *.db-wal
 *.db-shm
+
+# Runtime data (models, vectordb, config with API keys)
+/data/models/
+/data/vectordb/
+/data/llm-config.json
+
+# ONNX Runtime shared library
+/lib/

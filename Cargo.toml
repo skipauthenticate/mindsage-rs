@@ -68,8 +68,8 @@ dashmap = "6"
 # Numeric / embeddings
 ndarray = "0.17"
 
-# ONNX Runtime (feature-gated)
-ort = { version = "2.0.0-rc.11" }
+# ONNX Runtime (feature-gated, load-dynamic to use system libonnxruntime)
+ort = { version = "2.0.0-rc.11", default-features = false, features = ["std", "ndarray", "tracing", "load-dynamic"] }
 tokenizers = { version = "0.21" }
 
 # Testing

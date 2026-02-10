@@ -11,7 +11,7 @@ path = "src/main.rs"
 mindsage-core = { workspace = true }
 mindsage-store = { workspace = true }
 mindsage-ingest = { workspace = true }
-mindsage-infer = { workspace = true }
+mindsage-infer = { workspace = true, features = ["onnx"] }
 mindsage-chat = { workspace = true }
 mindsage-browser = { workspace = true }
 mindsage-localsend = { workspace = true }

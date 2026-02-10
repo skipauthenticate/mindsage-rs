@@ -49,6 +49,10 @@ mod inner {
                 return Err(format!("Tokenizer not found: {}", tokenizer_path.display()));
             }
 
+            // Initialize ONNX Runtime environment.
+            // With load-dynamic feature, ORT_DYLIB_PATH env var must point to libonnxruntime.so
+            ort::init().commit();
+
             let session = Session::builder()
                 .map_err(|e| format!("Failed to create session builder: {}", e))?
                 .with_intra_threads(2)
